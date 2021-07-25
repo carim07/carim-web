@@ -17,6 +17,6 @@ jobs:
         with:
           hugo-version: "0.85.0"
       - name: Build
-        run: hugo
+        run: hugo --theme=LoveIt
       - name: Deploy
         run: hugo deploy
