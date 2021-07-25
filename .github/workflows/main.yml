@@ -12,11 +12,11 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-        - name: Setup hugo
-          uses: peaceiris/actions-hugo@v2
-          with:
-            hugo-version: "0.85.0"
-        - name: Build
-          run: hugo
-        - name: Deploy
-          run: hugo deploy
+      - name: Setup hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.85.0"
+      - name: Build
+        run: hugo
+      - name: Deploy
+        run: hugo deploy
