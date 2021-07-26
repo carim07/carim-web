@@ -6,6 +6,13 @@ Personal website created using [hugo](https://gohugo.io/) and [LoveIt](https://h
 
 * [Hugo](https://gohugo.io/)
 
+## Build
+
+To build, do
+```
+hugo --theme=LoveIt
+```
+
 ## Deployment
 
 The deployment is done automatically via [GitHub Actions](https://github.com/features/actions).
