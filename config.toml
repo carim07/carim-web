@@ -11,7 +11,7 @@ theme = "LoveIt"
 
 [params]
   # LoveIt theme version
-  version = "0.2.X"
+  version = "0.3.X"
 
 #[menu]
 #  [[menu.main]]
