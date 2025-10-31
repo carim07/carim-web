@@ -230,7 +230,6 @@ theme = "LoveIt"
 order = [".jpg$", ".gif$"]
 
 [[deployment.targets]]
-
 name = "carim-s3-prod"
 URL = "s3://carim.ar?region=us-east-1"
-# cloudFrontDistributionID = E3BZRJFJV2ME7N
+cloudFrontDistributionID = "E38WXPLVGOJ43A"

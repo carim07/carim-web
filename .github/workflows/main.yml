@@ -20,11 +20,18 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "0.152.2"
+          hugo-version: "latest"
           extended: true
           
       - name: Build Site
-        run: hugo --minify
+        run: hugo --minify -e production
         
       - name: Deploy to S3
-        run: hugo deploy --maxDeletes -1
+        run: |
+          if hugo deploy --maxDeletes -1 --invalidateCDN 2>/dev/null; then
+            echo "✓ Deployed using hugo deploy"
+          else
+            echo "hugo deploy not available, using AWS CLI..."
+            aws s3 sync public/ s3://carim.ar --delete --region us-east-1
+            echo "✓ Deployed using AWS CLI"
+          fi
