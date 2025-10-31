@@ -11,36 +11,37 @@ theme = "LoveIt"
 
 [params]
   # LoveIt theme version
-  version = "0.3.X"
+  version = "0.2.X"
 
-#[menu]
-#  [[menu.main]]
-#    identifier = "posts"
-    # you can add extra information before the name (HTML format is supported), such as icons
-#    pre = ""
-    # you can add extra information after the name (HTML format is supported), such as icons
-#    post = ""
-#    name = "Posts"
-#    url = "/posts/"
-    # title will be shown when you hover on this menu link
-#    title = ""
-#    weight = 1
-#  [[menu.main]]
-#    identifier = "tags"
-#    pre = ""
-#    post = ""
-#    name = "Tags"
-#    url = "/tags/"
-#    title = ""
-#    weight = 2
-#  [[menu.main]]
-#    identifier = "categories"
-#    pre = ""
-#    post = ""
-#    name = "Categories"
-#    url = "/categories/"
-#    title = ""
-#    weight = 3
+[params.cdn]
+  # Use CDN for Mermaid with a newer version
+  mermaidJS = "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    pre = ""
+    post = ""
+    name = "Posts"
+    url = "/posts/"
+    title = "Blog Posts"
+    weight = 1
+  [[menu.main]]
+    identifier = "tags"
+    pre = ""
+    post = ""
+    name = "Tags"
+    url = "/tags/"
+    title = "Browse by Tags"
+    weight = 2
+  [[menu.main]]
+    identifier = "categories"
+    pre = ""
+    post = ""
+    name = "Categories"
+    url = "/categories/"
+    title = "Browse by Categories"
+    weight = 3
 
 # Markup related configuration in Hugo
 [markup]
@@ -76,7 +77,7 @@ theme = "LoveIt"
       # URL of the LOGO
       logo = ""
       # title name
-      name = "Carim"
+      name = "Home"
       # you can add extra information before the name (HTML format is supported), such as icons
       pre = ""
       # you can add extra information after the name (HTML format is supported), such as icons
@@ -143,25 +144,23 @@ theme = "LoveIt"
       disclaimer = ""
     # Home page posts
     [params.home.posts]
-      enable = false
+      enable = true
       # special amount of posts in each home posts page
       paginate = 6
       # LoveIt DELETED | 0.2.0 replaced with hiddenFromHomePage in params.page
       # default behavior when you don't set "hiddenFromHomePage" in front matter
-      defaultHiddenFromHomePage = true
+      defaultHiddenFromHomePage = false
 
   # Social config about the author
   [params.social]
     Linkedin = "carimfadil"
     GitHub = "carim07"
-    #Skype = "carimfadil"
     #Telegram = "carim07"
-    Keybase = "carim"
     Lastfm = "carim07"
     Strava = "carimfadil"
     Email = "carimfadil@gmail.com"
     #RSS = true # LoveIt NEW | 0.2.0
-    Spotify = "carim07"
+    #Spotify = "carim07"
     #Twitter = "xxxx"
     #Instagram = "xxxx"
     #Facebook = "xxxx"
@@ -234,4 +233,4 @@ order = [".jpg$", ".gif$"]
 
 name = "carim-s3-prod"
 URL = "s3://carim.ar?region=us-east-1"
-cloudFrontDistributionID = "E38WXPLVGOJ43A"
+# cloudFrontDistributionID = E3BZRJFJV2ME7N

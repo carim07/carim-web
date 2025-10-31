@@ -1,5 +1,9 @@
+# macOS files
 .DS_Store
 ._.DS_Store
-public/._*
-static/._*
+._*
+
+# Hugo build artifacts
 .hugo_build.lock
+/public/
+/resources/_gen/

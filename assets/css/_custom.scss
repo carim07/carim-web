@@ -1,0 +1,25 @@
+// Custom styles for carim.ar
+
+// Light theme: pastel yellowish/creamy background
+[theme='light'] {
+  body {
+    background-color: #fefdf8; // Very subtle creamy/yellowish tint
+  }
+  
+  .page {
+    background-color: #fefdf8;
+  }
+}
+
+// Add more space between social icons and first post on homepage
+.home-profile {
+  .links {
+    margin-bottom: 4rem !important; // Increased spacing after social icons
+  }
+}
+
+// Also add space to the posts section
+.posts {
+  margin-top: 4rem !important;
+}
+
