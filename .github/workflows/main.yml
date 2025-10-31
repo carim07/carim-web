@@ -1,1 +1,32 @@
-git 
+name: Deploy Hugo Site to S3
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v4
+        
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+          
+      - name: Install Hugo with Deploy Support
+        run: |
+          HUGO_VERSION="0.152.2"
+          wget -O hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_withdeploy_${HUGO_VERSION}_linux-amd64.tar.gz
+          tar -xzf hugo.tar.gz
+          sudo mv hugo /usr/local/bin/
+          hugo version
+          
+      - name: Build Site
+        run: hugo --minify -e production
+        
+      - name: Deploy to S3 with CloudFront Invalidation
+        run: hugo deploy --maxDeletes -1 --invalidateCDN
