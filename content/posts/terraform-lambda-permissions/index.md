@@ -525,10 +525,6 @@ After this incident, we also set up CloudWatch alarms to catch permission issues
 
 ## Wrapping Up
 
-What started as a simple "why didn't these Lambdas run?" question turned into a deep dive through AWS behavior, Terraform state management, and the hidden complexities of infrastructure migrations. The Lambda permissions were just the symptom—the real story was about how multiple architectural changes can compound in unexpected ways.
+The `replace_triggered_by` solution is defensive infrastructure - it protects against not just this specific issue, but any future scenario where Lambdas need to be replaced. Given how often infrastructure evolves (VPC changes, runtime updates, package type migrations), that peace of mind is worth it.
 
-The `replace_triggered_by` solution is elegant, but more importantly, it's defensive. It protects against not just this specific issue, but any future scenario where Lambdas need to be replaced. And given how often infrastructure evolves (VPC changes, runtime updates, package type migrations), that peace of mind is worth it.
-
-If you're managing Lambda functions with Terraform, especially if you've got EventBridge or S3 triggers, I'd highly recommend implementing this pattern before you run into the same drift issues we did.
-
-Have you encountered similar state drift problems with Terraform and AWS? I'd love to hear about your experiences!
+If you're managing Lambda functions with Terraform and EventBridge or S3 triggers, implement this pattern before you run into drift issues. Your future self will thank you.
