@@ -1,7 +1,7 @@
 ---
 title: "The Mystery of the Disappearing Lambda Triggers: A Terraform State Drift Story"
-date: 2024-10-31T10:00:00-07:00
-lastmod: 2024-10-31T10:00:00-07:00
+date: 2025-10-31T10:00:00-07:00
+lastmod: 2025-10-31T10:00:00-07:00
 draft: false
 author: "Carim Fadil"
 authorLink: "https://carim.ar"
