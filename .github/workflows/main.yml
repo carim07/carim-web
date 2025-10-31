@@ -17,21 +17,16 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
           
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: "latest"
-          extended: true
+      - name: Install Hugo with Deploy Support
+        run: |
+          HUGO_VERSION="0.139.3"
+          wget -O hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz
+          tar -xzf hugo.tar.gz
+          sudo mv hugo /usr/local/bin/
+          hugo version
           
       - name: Build Site
         run: hugo --minify -e production
         
-      - name: Deploy to S3
-        run: |
-          if hugo deploy --maxDeletes -1 --invalidateCDN 2>/dev/null; then
-            echo "✓ Deployed using hugo deploy"
-          else
-            echo "hugo deploy not available, using AWS CLI..."
-            aws s3 sync public/ s3://carim.ar --delete --region us-east-1
-            echo "✓ Deployed using AWS CLI"
-          fi
+      - name: Deploy to S3 with CloudFront Invalidation
+        run: hugo deploy --maxDeletes -1 --invalidateCDN
