@@ -15,7 +15,7 @@ theme = "LoveIt"
 
 [params.cdn]
   # Use CDN for Mermaid with a newer version
-  mermaidJS = "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"
+  mermaidJS = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"
 
 [menu]
   [[menu.main]]
