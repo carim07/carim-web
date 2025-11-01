@@ -225,6 +225,14 @@ theme = "LoveIt"
     cursorChar = "|"
     # cursor duration after typing finishing (measured in milliseconds, "-1" means unlimited)
     duration = -1
+
+# Giscus comment system (https://giscus.app)
+[params.giscus]
+    enable = true
+    repo = "carim07/carim-web"
+    repoId = "MDEwOlJlcG9zaXRvcnkzODk0NDI2MzM "  # Get from https://giscus.app
+    category = "Blog Comments"       # Discussion category name
+    categoryId = "DIC_kwDOFzZsSc4CxVNZ"  # Get from https://giscus.app
     
 [deployment]
 order = [".jpg$", ".gif$"]
