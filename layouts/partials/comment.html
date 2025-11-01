@@ -145,22 +145,18 @@
                 crossorigin="anonymous"
                 async>
         </script>
-
+        
         <script>
           // Sync Giscus theme with site theme toggle
-          function setGiscusTheme(theme) {
+          const observer = new MutationObserver(() => {
+            const isDark = document.body.getAttribute('theme') === 'dark';
             const iframe = document.querySelector('iframe.giscus-frame');
-            if (!iframe) return;
-            iframe.contentWindow.postMessage(
-              { giscus: { setConfig: { theme: theme } } },
-              'https://giscus.app'
-            );
-          }
-
-          // Listen for theme changes
-          const observer = new MutationObserver((mutations) => {
-            const theme = document.body.getAttribute('theme');
-            setGiscusTheme(theme === 'dark' ? 'dark' : 'light');
+            if (iframe) {
+              iframe.contentWindow.postMessage(
+                { giscus: { setConfig: { theme: isDark ? 'transparent_dark' : 'light' } } },
+                'https://giscus.app'
+              );
+            }
           });
           observer.observe(document.body, { attributes: true, attributeFilter: ['theme'] });
         </script>
