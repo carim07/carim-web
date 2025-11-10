@@ -354,58 +354,6 @@ aws logs tail /aws/chatbot/your-config-name --follow
    - Shows actual errors (not just "no notifications")
    - Critical for debugging encryption issues
 
-## What Worked vs. What Didn't
-
-### ❌ What Didn't Work
-
-**Testing with manual SNS publish:**
-
-```bash
-aws sns publish --topic-arn ... --message "Test"
-```
-
-- Bypasses CloudWatch
-- Different message format
-- Doesn't test full flow
-
-**Granting permissions only to channel role:**
-
-- SNS subscriptions use service-linked role
-- Messages silently fail to decrypt
-
-**Checking SNS delivery metrics alone:**
-
-- SNS shows "delivered" even if Chatbot rejects
-- Need Chatbot logs to see rejections
-
-### ✅ What Worked
-
-**Triggering actual CloudWatch alarms in dev:**
-
-```bash
-aws cloudwatch set-alarm-state --alarm-name ... --state-value ALARM
-```
-
-- Tests complete flow in safe environment
-- Same code path as production
-- Reveals actual issues before they impact users
-
-**Checking CloudWatch Logs:**
-
-```bash
-aws logs tail /aws/chatbot/config-name --follow
-```
-
-- Shows if messages arriving
-- Reveals format issues
-- Displays actual errors
-
-**Adding all three service principals:**
-
-- CloudWatch can publish
-- SNS can encrypt
-- Chatbot can decrypt
-
 ## The Aftermath
 
 After deploying this fix to development and thoroughly validating:
@@ -415,11 +363,6 @@ After deploying this fix to development and thoroughly validating:
 - ✅ Infrastructure as code (Chatbot IAM role)
 - ✅ Least privilege permissions (removed unnecessary GenerateDataKey)
 - ✅ Validated in dev before production deployment
-
-Time to discover issue: ~1 day of observation  
-Time to debug and fix: ~2 hours  
-Production incidents prevented: 1  
-Lessons learned: Priceless
 
 ## For Future Reference
 
