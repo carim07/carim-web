@@ -119,12 +119,12 @@
 
 {{- /* mermaid */ -}}
 {{- if (.Scratch.Get "this").mermaid -}}
-    {{- $source := $cdn.mermaidJS | default "lib/mermaid/mermaid.min.js" -}}
+    {{- $source := .Site.Params.cdn.mermaidJS | default ($cdn.mermaidJS | default "lib/mermaid/mermaid.min.js") -}}
     {{- dict "Source" $source "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
+    {{- /* Custom mermaid initialization for Mermaid 11+ */ -}}
+    <script type="text/javascript" src="{{ "/js/custom-mermaid.js" | relURL }}"></script>
     {{- $options := dict "targetPath" "lib/mermaid/mermaid.min.css" "enableSourceMap" true -}}
     {{- dict "Source" "lib/mermaid/mermaid.scss" "ToCSS" $options "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/style.html" -}}
-    {{- /* Custom mermaid initialization */ -}}
-    <script type="text/javascript" src="{{ "/js/custom-mermaid.js" | relURL }}"></script>
 {{- end -}}
 
 {{- /* ECharts */ -}}

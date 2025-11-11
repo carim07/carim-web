@@ -1,50 +1,41 @@
-// Custom Mermaid initialization for Mermaid 11+
+// Mermaid 11+ initialization - overrides theme's broken implementation
 (function() {
-    // Wait for mermaid library to load
-    function initCustomMermaid() {
-        if (typeof mermaid === 'undefined') {
-            setTimeout(initCustomMermaid, 100);
-            return;
-        }
-
-        const renderMermaid = () => {
-            const isDark = document.body.getAttribute('theme') === 'dark';
-            const mermaidTheme = isDark ? 'dark' : 'default';
-            
-            mermaid.initialize({
-                startOnLoad: false,
-                theme: mermaidTheme,
-                securityLevel: 'loose'
-            });
-
-            // Use mermaid.run() for Mermaid 11+
-            const elements = document.querySelectorAll('.mermaid');
-            if (elements.length > 0) {
-                mermaid.run({
-                    nodes: elements,
-                }).catch(error => {
-                    console.error('Mermaid render error:', error);
-                });
+    // Intercept Theme initialization
+    var originalTheme = window.Theme;
+    if (originalTheme) {
+        var checkInterval = setInterval(function() {
+            if (window.Theme && window.Theme.prototype && window.Theme.prototype.initMermaid) {
+                // Replace theme's initMermaid with our implementation
+                window.Theme.prototype.initMermaid = function() {
+                    var self = this;
+                    var elements = document.querySelectorAll('.mermaid');
+                    if (elements.length === 0 || typeof mermaid === 'undefined') return;
+                    
+                    var isDark = document.body.getAttribute('theme') === 'dark';
+                    mermaid.initialize({
+                        startOnLoad: false,
+                        theme: isDark ? 'dark' : 'default'
+                    });
+                    
+                    // Render each diagram
+                    elements.forEach(function(element) {
+                        var id = element.id;
+                        var code = self.data && self.data[id] ? self.data[id] : null;
+                        if (code) {
+                            mermaid.render('svg-' + id, code).then(function(result) {
+                                element.innerHTML = result.svg;
+                            }).catch(function(err) {
+                                console.error('Mermaid render error:', err);
+                            });
+                        }
+                    });
+                };
+                clearInterval(checkInterval);
             }
-        };
-
-        // Initial render
-        renderMermaid();
-
-        // Re-render on theme switch
-        const themeButtons = document.querySelectorAll('[data-theme-switch], .theme-switch');
-        themeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                setTimeout(renderMermaid, 100);
-            });
-        });
-    }
-
-    // Start initialization when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initCustomMermaid);
-    } else {
-        initCustomMermaid();
+        }, 10);
+        
+        // Stop checking after 2 seconds
+        setTimeout(function() { clearInterval(checkInterval); }, 2000);
     }
 })();
 
