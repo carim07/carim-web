@@ -1,0 +1,30 @@
+layouts/shortcodes/mermaid.html:2:<div class="mermaid" id="{{ $id }}"></div>
+layouts/shortcodes/mermaid.html:3:{{- .Page.Scratch.SetInMap "this" "mermaid" true -}}
+layouts/partials/assets.html:120:{{- /* mermaid */ -}}
+layouts/partials/assets.html:121:{{- if (.Scratch.Get "this").mermaid -}}
+layouts/partials/assets.html:122:    {{- $source := .Site.Params.cdn.mermaidJS | default ($cdn.mermaidJS | default "lib/mermaid/mermaid.min.js") -}}
+layouts/partials/assets.html:124:    {{- /* Custom mermaid initialization for Mermaid 11+ */ -}}
+layouts/partials/assets.html:125:    <script type="text/javascript" src="{{ "/js/custom-mermaid.js" | relURL }}"></script>
+layouts/partials/assets.html:126:    {{- $options := dict "targetPath" "lib/mermaid/mermaid.min.css" "enableSourceMap" true -}}
+layouts/partials/assets.html:127:    {{- dict "Source" "lib/mermaid/mermaid.scss" "ToCSS" $options "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/style.html" -}}
+config.toml:10:theme = "LoveIt"
+config.toml:13:  # LoveIt theme version
+config.toml:18:  mermaidJS = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"
+config.toml:50:    # false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
+config.toml:61:    # LoveIt NEW | 0.2.1 max number of results length
+config.toml:63:    # LoveIt NEW | 0.2.3 snippet length of the result
+config.toml:65:    # LoveIt NEW | 0.2.1 HTML tag name of the highlight part in results
+config.toml:67:    # LoveIt NEW | 0.2.4 whether to use the absolute URL based on the baseURL in search index
+config.toml:75:    # LoveIt NEW | 0.2.0 Header title config
+config.toml:85:      # LoveIt NEW | 0.2.5 whether to use typeit animation for title name
+config.toml:91:    # LoveIt NEW | 0.2.0 Custom content (HTML format is supported)
+config.toml:93:    # LoveIt NEW | 0.2.0 whether to show Hugo and theme info
+config.toml:95:    # LoveIt NEW | 0.2.0 whether to show copyright info
+config.toml:97:    # LoveIt NEW | 0.2.0 whether to show the author
+config.toml:106:  # LoveIt NEW | 0.2.0 Section (all posts) page config
+config.toml:115:  # LoveIt NEW | 0.2.0 List (category or tag) page config
+config.toml:126:    # LoveIt NEW | 0.2.0 amount of RSS pages
+config.toml:135:      # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
+config.toml:143:      # LoveIt NEW | 0.2.0 disclaimer (HTML format is supported)
+config.toml:150:      # LoveIt DELETED | 0.2.0 replaced with hiddenFromHomePage in params.page
+config.toml:162:    #RSS = true # LoveIt NEW | 0.2.0

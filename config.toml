@@ -11,11 +11,13 @@ theme = "LoveIt"
 
 [params]
   # LoveIt theme version
-  version = "0.2.X"
+  version = "0.3.0"
 
 [params.cdn]
-  # Use CDN for Mermaid with a newer version
-  mermaidJS = "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"
+  # Prefer self-hosted third-party libraries shipped with LoveIt v0.3.0.
+  # Remove Mermaid CDN override to avoid loading ESM-only builds that do not expose window.mermaid.
+  # To re-enable a CDN, set to a UMD/IIFE compatible build (e.g., mermaid 9.x).
+  data = ""
 
 [menu]
   [[menu.main]]
