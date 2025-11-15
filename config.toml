@@ -244,6 +244,33 @@ theme = "LoveIt"
         inputPosition = "top"
         lightTheme = "light"
         darkTheme = "transparent_dark"
+
+# Social share links in post page
+[params.page.share]
+    enable = true
+    Twitter = true
+    Facebook = true
+    Linkedin = true
+    Whatsapp = false
+    Pinterest = false
+    Tumblr = false
+    Hackernews = true
+    Reddit = true
+    VK = false
+    Buffer = false
+    Xing = false
+    Line = false
+    Instapaper = false
+    Pocket = true
+    Flipboard = false
+    Weibo = false
+    Blogger = false
+    Baidu = false
+    Odnoklassniki = false
+    Evernote = false
+    Skype = false
+    Trello = false
+    Mix = false
     
 [languages]
   [languages.en]
