@@ -89,8 +89,9 @@ The permissions were indeed missing. But the question remained: **Why?**
 Here's what the architecture looks like when everything is configured correctly vs. when permissions are missing:
 
 {{< mermaid >}}
-graph LR
-    subgraph working[" Working Configuration "]
+flowchart LR
+    %% Working configuration
+    subgraph "Working Configuration"
         EB1[EventBridge Rule]
         ET1[EventBridge Target]
         LP1[Lambda Permission]
@@ -105,18 +106,19 @@ graph LR
         style LP1 fill:#90EE90,stroke:#2d5016,color:#000
     end
 
-    subgraph broken[" Broken Configuration "]
+    %% Broken configuration
+    subgraph "Broken Configuration"
         EB2[EventBridge Rule]
         ET2[EventBridge Target]
         LP2[Lambda Permission]
         L2[Lambda Function]
 
         EB2 -->|points to| ET2
-        ET2 -.->|❌ BLOCKED| L2
+        ET2 -.->|BLOCKED| L2
         LP2 -.->|MISSING| L2
 
         style L2 fill:#FFB6C1,stroke:#8B0000,color:#000
-        style LP2 fill:#FFB6C1,stroke:#8B0000,stroke-dasharray: 5 5,color:#000
+        style LP2 fill:#FFB6C1,stroke:#8B0000,color:#000
     end
 {{< /mermaid >}}
 
@@ -350,30 +352,30 @@ resource "aws_lambda_permission" "s3_invoke" {
 #### Visualizing the Module Boundary Issue
 
 {{< mermaid >}}
-graph TB
+flowchart TB
     subgraph "Module Boundary Issue"
         subgraph "lambda_module"
             LF1[aws_lambda_function.this]
-            LP1[aws_lambda_permission<br/>EventBridge]
+            LP1[aws_lambda_permission EventBridge]
 
-            LP1 -.->|replace_triggered_by ✓| LF1
+            LP1 -.->|replace_triggered_by OK| LF1
 
             style LP1 fill:#90EE90,stroke:#2d5016,color:#000
         end
 
         subgraph "root_config"
             S3[aws_s3_bucket]
-            LP2[aws_lambda_permission<br/>S3 invoke]
+            LP2[aws_lambda_permission S3 invoke]
 
             LP2 -->|function_name| LF1
-            LP2 -.->|replace_triggered_by ❌<br/>can't cross boundary| LF1
+            LP2 -.->|replace_triggered_by cannot cross boundary| LF1
             S3 -->|source_arn| LP2
 
             style LP2 fill:#FFB6C1,stroke:#8B0000,color:#000
         end
     end
 
-    Note[Module outputs can't be used<br/>in replace_triggered_by]
+    Note["Module outputs cannot be used in replace_triggered_by"]
     style Note fill:#FFE4B5,stroke:#8B4513,color:#000
 {{< /mermaid >}}
 
@@ -428,19 +430,19 @@ module "my_lambda" {
 #### Before and After Architecture
 
 {{< mermaid >}}
-graph TB
+flowchart TB
     subgraph "BEFORE: Broken Configuration"
         subgraph "lambda_module_before"
             LF1[Lambda Function]
             LP1[EventBridge Permission]
 
-            LP1 -.->|replace_triggered_by ✓| LF1
+            LP1 -.->|replace_triggered_by OK| LF1
         end
 
         subgraph "root_config_before"
-            LP2[S3 Permission ❌]
+            LP2["S3 Permission (missing)"]
 
-            LP2 -.->|❌ Can't trigger<br/>on Lambda replace| LF1
+            LP2 -.->|cannot trigger on Lambda replace| LF1
         end
 
         style LP2 fill:#FFB6C1,stroke:#8B0000,color:#000
@@ -452,8 +454,8 @@ graph TB
             LP3[EventBridge Permission]
             LP4[S3 Permission]
 
-            LP3 -.->|replace_triggered_by ✓| LF2
-            LP4 -.->|replace_triggered_by ✓| LF2
+            LP3 -.->|replace_triggered_by OK| LF2
+            LP4 -.->|replace_triggered_by OK| LF2
 
             style LP3 fill:#90EE90,stroke:#2d5016,color:#000
             style LP4 fill:#90EE90,stroke:#2d5016,color:#000
@@ -461,7 +463,7 @@ graph TB
         end
 
         subgraph "root_config_after"
-            Note[All permissions<br/>now in module!]
+            Note["All permissions now in module"]
             style Note fill:#E6F3FF,stroke:#1e40af,color:#000
         end
     end

@@ -7,3 +7,7 @@
 .hugo_build.lock
 /public/
 /resources/_gen/
+
+# Local work artifacts (do not commit)
+/backup/
+/docs/loveit-upgrade-mermaid-notes.md

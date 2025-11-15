@@ -23,3 +23,16 @@
   margin-top: 4rem !important;
 }
 
+// Center Mermaid diagrams consistently
+.page .mermaid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page .mermaid > svg {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  max-width: 100%;
+}
+
