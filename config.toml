@@ -3,6 +3,7 @@ baseURL = "http://carim.ar/"
 defaultContentLanguage = "en"
 # language code
 languageCode = "en"
+defaultContentLanguageInSubdir = false
 title = "Carim Fadil"
 uglyURLs = false
 
@@ -244,6 +245,43 @@ theme = "LoveIt"
         lightTheme = "light"
         darkTheme = "transparent_dark"
     
+[languages]
+  [languages.en]
+    languageName = "English"
+    languageCode = "en"
+    weight = 1
+
+  [languages.es]
+    languageName = "Español"
+    languageCode = "es"
+    weight = 2
+
+  # Spanish menu labels
+  [languages.es.menu]
+    [[languages.es.menu.main]]
+      identifier = "posts"
+      name = "Artículos"
+      url = "/posts/"
+      title = "Artículos del blog"
+      weight = 1
+    [[languages.es.menu.main]]
+      identifier = "tags"
+      name = "Etiquetas"
+      url = "/tags/"
+      title = "Explorar por etiquetas"
+      weight = 2
+    [[languages.es.menu.main]]
+      identifier = "categories"
+      name = "Categorías"
+      url = "/categories/"
+      title = "Explorar por categorías"
+      weight = 3
+
+  # Spanish localized home profile
+  [languages.es.params.home.profile]
+    title = "Soy Carim Fadil, Ingeniero DevOps"
+    subtitle = "Interesado en arquitectura en la nube, optimización de infraestructura, automatización de pipelines, el ciclismo y la naturaleza. ¡Contáctame!"
+
 [deployment]
 order = [".jpg$", ".gif$"]
 

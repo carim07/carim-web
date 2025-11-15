@@ -1,0 +1,10 @@
+[allSome]
+other = "Todas las {{ .Some }}"
+
+[categories]
+other = "categorías"
+
+[tags]
+other = "etiquetas"
+
+
