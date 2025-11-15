@@ -432,6 +432,9 @@ module "my_lambda" {
 {{< mermaid >}}
 flowchart TB
     subgraph "BEFORE: Broken Configuration"
+        %% spacer to prevent title overlap with inner subgraph title
+        pad_before[" "]
+        style pad_before fill:none,stroke:none
         subgraph "lambda_module_before"
             LF1[Lambda Function]
             LP1[EventBridge Permission]
