@@ -353,26 +353,25 @@ resource "aws_lambda_permission" "s3_invoke" {
 
 {{< mermaid >}}
 flowchart TB
-    subgraph "Module Boundary Issue"
-        subgraph "lambda_module"
-            LF1[aws_lambda_function.this]
-            LP1[aws_lambda_permission EventBridge]
+    %% Visualize module and root config without an outer cluster to avoid title overlap
+    subgraph "lambda_module"
+        LF1[aws_lambda_function.this]
+        LP1[aws_lambda_permission EventBridge]
 
-            LP1 -.->|replace_triggered_by OK| LF1
+        LP1 -.->|replace_triggered_by OK| LF1
 
-            style LP1 fill:#90EE90,stroke:#2d5016,color:#000
-        end
+        style LP1 fill:#90EE90,stroke:#2d5016,color:#000
+    end
 
-        subgraph "root_config"
-            S3[aws_s3_bucket]
-            LP2[aws_lambda_permission S3 invoke]
+    subgraph "root_config"
+        S3[aws_s3_bucket]
+        LP2[aws_lambda_permission S3 invoke]
 
-            LP2 -->|function_name| LF1
-            LP2 -.->|replace_triggered_by cannot cross boundary| LF1
-            S3 -->|source_arn| LP2
+        LP2 -->|function_name| LF1
+        LP2 -.->|replace_triggered_by cannot cross boundary| LF1
+        S3 -->|source_arn| LP2
 
-            style LP2 fill:#FFB6C1,stroke:#8B0000,color:#000
-        end
+        style LP2 fill:#FFB6C1,stroke:#8B0000,color:#000
     end
 
     Note["Module outputs cannot be used in replace_triggered_by"]
@@ -433,8 +432,8 @@ module "my_lambda" {
 flowchart TB
     subgraph "BEFORE: Broken Configuration"
         %% spacer to prevent title overlap with inner subgraph title
-        pad_before[" "]
-        style pad_before fill:none,stroke:none
+        pad_before[pad]
+        style pad_before fill:transparent,stroke-width:0px,color:transparent
         subgraph "lambda_module_before"
             LF1[Lambda Function]
             LP1[EventBridge Permission]
