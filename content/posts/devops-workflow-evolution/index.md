@@ -37,36 +37,36 @@ My workflow used to follow the standard DevOps lifecycle pattern:
 
 {{< mermaid >}}
 flowchart TD
-    Start([Start Task]) --> Investigate["🔍 Investigation & Planning"]
+    Start([Start Task]) --> Investigate["Investigation & Planning"]
     Investigate --> Google[Google Search]
     Investigate --> StackOverflow[Stack Overflow]
     Investigate --> Docs["AWS/Terraform/Kubernetes Docs<br/>(Deep Reading)"]
     Investigate --> Trial["Trial & Error"]
     
-    Google --> Plan["📐 Plan"]
+    Google --> Plan["Plan"]
     StackOverflow --> Plan
     Docs --> Plan
     Trial --> Plan
     
-    Plan --> Code["💻 Code"]
+    Plan --> Code["Code"]
     Code --> VSCode[VS Code Editor]
     VSCode --> Manual[Manual Coding]
     Manual --> Copilot["GitHub Copilot - Basic Autocomplete"]
     
-    Copilot --> CICD["🔄 CI/CD Pipeline"]
+    Copilot --> CICD["CI/CD Pipeline"]
     CICD --> Build["Build"]
     Build --> Test["Test"]
     Test --> Release["Release"]
     Release --> Deploy["Deploy"]
     
-    Deploy --> Monitor["📊 Monitor"]
+    Deploy --> Monitor["Monitor"]
     Monitor --> CloudWatch["CloudWatch/Prometheus/Grafana"]
     
-    Code --> Tasks["📋 Task Management"]
+    Code --> Tasks["Task Management"]
     Tasks --> ManualJira[Manual Jira Tickets]
     Tasks --> ManualDocs[Manual PR Docs]
     
-    CICD --> Review["📝 Code Review"]
+    CICD --> Review["Code Review"]
     Review --> HumanReview[Human Reviewers]
     Review --> AutomatedChecks["Linting, Terraform Validate,<br/>Static Code Analysis"]
     
@@ -74,15 +74,15 @@ flowchart TD
     AutomatedChecks --> Done
     CloudWatch --> Done
     
-    style Investigate fill:#FFE4B5
-    style Plan fill:#FFB6C1
-    style Code fill:#FFB6C1
-    style CICD fill:#87CEEB
-    style Monitor fill:#DDA0DD
-    style Tasks fill:#E0E0E0
-    style Review fill:#DDA0DD
-    style Manual fill:#FF6B6B
-    style Done fill:#90EE90
+    style Investigate fill:#FFE4B5,stroke:#333,color:#000
+    style Plan fill:#FFB6C1,stroke:#333,color:#000
+    style Code fill:#FFB6C1,stroke:#333,color:#000
+    style CICD fill:#87CEEB,stroke:#333,color:#000
+    style Monitor fill:#DDA0DD,stroke:#333,color:#000
+    style Tasks fill:#E0E0E0,stroke:#333,color:#000
+    style Review fill:#DDA0DD,stroke:#333,color:#000
+    style Manual fill:#FF6B6B,stroke:#333,color:#000
+    style Done fill:#90EE90,stroke:#333,color:#000
 {{< /mermaid >}}
 
 ### Investigation & Planning: The Documentation Deep Dive
@@ -154,28 +154,28 @@ Fast forward to today, and my workflow looks completely different:
 
 {{< mermaid >}}
 flowchart TD
-    Start([Start Task]) --> Plan["📐 AI-Assisted Planning"]
+    Start([Start Task]) --> Plan["AI-Assisted Planning"]
     Plan --> Markdown[Markdown Planning Docs]
     Plan --> AIExplore[AI Problem Exploration]
     Plan --> StructuredPlan[Structured Task Breakdown]
     
-    Plan --> Investigate["🔍 AI-Assisted Investigation"]
+    Plan --> Investigate["AI-Assisted Investigation"]
     Investigate --> CursorAsk[Cursor Ask Mode]
     Investigate --> AWSCLI["AI + AWS CLI"]
     Investigate --> OtherCLIs["AI + Other CLIs"]
     
-    Investigate --> Develop["💻 AI-Powered Development"]
+    Investigate --> Develop["AI-Powered Development"]
     Develop --> Cursor[Cursor IDE]
     Cursor --> AILibrary["AI Library - Prompts & Patterns"]
     Cursor --> PlanMode[Plan Mode]
     Cursor --> CodeGen[Intelligent Code Gen]
     
-    Develop --> Tasks["📋 Automated Task Management"]
+    Develop --> Tasks["Automated Task Management"]
     Tasks --> MCPs["MCPs: Jira, GitHub, etc."]
     Tasks --> GHCLI["GitHub CLI + AI"]
     Tasks --> AutoDocs[Auto Documentation]
     
-    Develop --> Review["📝 Multi-Layer Review"]
+    Develop --> Review["Multi-Layer Review"]
     Review --> Bugbot[Bugbot]
     Review --> CodeQL[CodeQL Scanning]
     Review --> CursorReview[Cursor PR Review]
@@ -184,14 +184,14 @@ flowchart TD
     Review --> Done([Done])
     HumanReview --> Done
     
-    style Plan fill:#90EE90
-    style Investigate fill:#87CEEB
-    style Develop fill:#DDA0DD
-    style Tasks fill:#FFD700
-    style Review fill:#FFA07A
-    style Done fill:#90EE90
-    style CursorAsk fill:#FFE4B5
-    style AWSCLI fill:#FFE4B5
+    style Plan fill:#90EE90,stroke:#333,color:#000
+    style Investigate fill:#87CEEB,stroke:#333,color:#000
+    style Develop fill:#DDA0DD,stroke:#333,color:#000
+    style Tasks fill:#FFD700,stroke:#333,color:#000
+    style Review fill:#FFA07A,stroke:#333,color:#000
+    style Done fill:#90EE90,stroke:#333,color:#000
+    style CursorAsk fill:#FFE4B5,stroke:#333,color:#000
+    style AWSCLI fill:#FFE4B5,stroke:#333,color:#000
 {{< /mermaid >}}
 
 ### Investigation: AI-Assisted Discovery
@@ -401,12 +401,12 @@ flowchart TB
         direction LR
         B1[Problem] --> B2[Manual Research] --> B3[Quick Planning] --> B4[Start Coding] --> B5[Discover Issues] --> B6[Fix & Rework]
         
-        style B1 fill:#FFB6C1
-        style B2 fill:#FFB6C1
-        style B3 fill:#FFB6C1
-        style B4 fill:#FFB6C1
-        style B5 fill:#FFB6C1
-        style B6 fill:#FF6B6B
+        style B1 fill:#FFB6C1,stroke:#333,color:#000
+        style B2 fill:#FFB6C1,stroke:#333,color:#000
+        style B3 fill:#FFB6C1,stroke:#333,color:#000
+        style B4 fill:#FFB6C1,stroke:#333,color:#000
+        style B5 fill:#FFB6C1,stroke:#333,color:#000
+        style B6 fill:#FF6B6B,stroke:#333,color:#000
     end
     
     Before ==>|"AI-Assisted Evolution"| After
@@ -415,13 +415,13 @@ flowchart TB
         direction LR
         A1[Problem] --> A2[AI Explore Problem Space] --> A3[Generate Structured Plan] --> A4[Document in Markdown] --> A5["AI Review & Refine"] --> A6[Execute with Confidence] --> A7[Low Rework]
         
-        style A1 fill:#90EE90
-        style A2 fill:#90EE90
-        style A3 fill:#90EE90
-        style A4 fill:#90EE90
-        style A5 fill:#90EE90
-        style A6 fill:#90EE90
-        style A7 fill:#87CEEB
+        style A1 fill:#90EE90,stroke:#333,color:#000
+        style A2 fill:#90EE90,stroke:#333,color:#000
+        style A3 fill:#90EE90,stroke:#333,color:#000
+        style A4 fill:#90EE90,stroke:#333,color:#000
+        style A5 fill:#90EE90,stroke:#333,color:#000
+        style A6 fill:#90EE90,stroke:#333,color:#000
+        style A7 fill:#87CEEB,stroke:#333,color:#000
     end
 {{< /mermaid >}}
 
