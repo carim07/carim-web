@@ -1,7 +1,7 @@
 ---
 title: "How AI Transformed My Workflow as a Senior DevOps Engineer"
-date: 2025-11-18T10:00:00-07:00
-lastmod: 2025-11-18T10:00:00-07:00
+date: 2025-11-19T10:00:00-00:00
+lastmod: 2025-11-19T10:00:00-00:00
 draft: false
 author: "Carim Fadil"
 authorLink: "https://carim.ar"
@@ -33,66 +33,120 @@ This isn't just about using a new tool—it's about a complete shift in how I ap
 
 ## The Before: Traditional DevOps Workflow
 
-My workflow used to follow a pretty standard pattern:
+My workflow used to follow the standard DevOps lifecycle pattern:
 
 {{< mermaid >}}
 flowchart TD
-    Start([Start Task]) --> Investigate["🔍 Investigation"]
+    Start([Start Task]) --> Investigate["🔍 Investigation & Planning"]
     Investigate --> Google[Google Search]
     Investigate --> StackOverflow[Stack Overflow]
-    Investigate --> Docs[AWS Docs]
+    Investigate --> Docs["AWS/Terraform/Kubernetes Docs<br/>(Deep Reading)"]
     Investigate --> Trial["Trial & Error"]
     
-    Google --> Code["💻 Development"]
-    StackOverflow --> Code
-    Docs --> Code
-    Trial --> Code
+    Google --> Plan["📐 Plan"]
+    StackOverflow --> Plan
+    Docs --> Plan
+    Trial --> Plan
     
+    Plan --> Code["💻 Code"]
     Code --> VSCode[VS Code Editor]
     VSCode --> Manual[Manual Coding]
     Manual --> Copilot["GitHub Copilot - Basic Autocomplete"]
-    Copilot --> Review["📝 Code Review"]
+    
+    Copilot --> CICD["🔄 CI/CD Pipeline"]
+    CICD --> Build["Build"]
+    Build --> Test["Test"]
+    Test --> Release["Release"]
+    Release --> Deploy["Deploy"]
+    
+    Deploy --> Monitor["📊 Monitor"]
+    Monitor --> CloudWatch["CloudWatch/Prometheus/Grafana"]
     
     Code --> Tasks["📋 Task Management"]
     Tasks --> ManualJira[Manual Jira Tickets]
     Tasks --> ManualDocs[Manual PR Docs]
     
+    CICD --> Review["📝 Code Review"]
     Review --> HumanReview[Human Reviewers]
-    Review --> BasicChecks[Basic Linting]
+    Review --> AutomatedChecks["Linting, Terraform Validate,<br/>Static Code Analysis"]
     
     HumanReview --> Done([Done])
-    BasicChecks --> Done
+    AutomatedChecks --> Done
+    CloudWatch --> Done
     
     style Investigate fill:#FFE4B5
+    style Plan fill:#FFB6C1
     style Code fill:#FFB6C1
+    style CICD fill:#87CEEB
+    style Monitor fill:#DDA0DD
     style Tasks fill:#E0E0E0
     style Review fill:#DDA0DD
     style Manual fill:#FF6B6B
     style Done fill:#90EE90
 {{< /mermaid >}}
 
-### Investigation
-- **Google searches** for documentation, error messages, and solutions
-- **Stack Overflow** deep dives
-- **AWS documentation** browsing
-- Manual trial and error
+### Investigation & Planning: The Documentation Deep Dive
 
-### Development
+This phase was where I spent a disproportionate amount of time. Before even starting to plan the solution, I had to:
+
+- **Deep documentation reading**: Spending hours reading AWS, Terraform, Kubernetes, or other platform documentation—not just the high-level overview, but diving deep into:
+  - Exact syntax and parameter formats
+  - All available options and their implications
+  - Edge cases and limitations
+  - Examples and use cases
+  
+- **Google searches** for error messages, solutions, and best practices
+- **Stack Overflow deep dives** to understand how others solved similar problems
+- **Manual trial and error** to validate understanding
+- **Planning** after gathering all this information
+
+**The time sink**: A significant portion of my time went into understanding the minutiae of implementation details—the exact parameters a Terraform resource accepts, the specific format of a CloudFormation template, the precise flags for a CLI command. This was necessary, but it slowed down the actual problem-solving and architecture work.
+
+### Code: Manual Development
+
 - **VS Code** as my primary editor
 - **AI-assisted autocomplete** (GitHub Copilot) for basic suggestions
 - **Mostly manual coding** with occasional AI help
 - Writing code line by line, function by function
+- Still referencing documentation frequently during coding
 
-### Task Management
+### Build, Test, Release, Deploy: The CI/CD Pipeline
+
+Once code was committed, the CI/CD pipeline automatically handled:
+
+- **Build**: Compiling code, building Docker images, packaging Lambda functions
+- **Test**: Running unit tests, integration tests, security scans
+- **Release**: Preparing artifacts for deployment, tagging versions
+- **Deploy**: Deploying to staging and production environments (often with manual approval gates)
+
+This part was well-automated, but the coding phase that fed into it was still largely manual.
+
+### Monitor: Observability and Alerting
+
+Post-deployment monitoring was handled by:
+
+- **CloudWatch** for AWS resource metrics, logs, and alarms
+- **Prometheus/Grafana** for custom metrics and dashboards
+- **Other monitoring tools** depending on the environment
+- Manual investigation when alerts fired
+
+### Task Management & Code Review
+
 - **Manual Jira ticket creation** and updates
 - **Manual documentation** in PRs and tickets
-- Keeping track of tasks in my head or scattered notes
+- **Manual PR reviews** with human reviewers focusing on everything from syntax to architecture
+- Basic automated checks (linting, basic security scans, static analysis)
 
-### Code Review
-- **Manual PR reviews** with human reviewers
-- Basic automated checks (linting, basic security scans)
+### The Challenge: Time Distribution
 
-This workflow worked, but it was time-consuming. I spent a lot of time on repetitive tasks, searching for information, and writing boilerplate code. The cognitive load was high, and I often found myself context-switching between investigation, coding, and documentation.
+This workflow worked, but the time distribution was problematic:
+
+- **40-50% of time**: Reading documentation, understanding syntax and parameters
+- **30-40% of time**: Writing code
+- **10-20% of time**: Architecture, planning, and understanding system integrations
+- **5-10% of time**: Code review and refinement
+
+The majority of my time was spent on implementation details rather than on the higher-value work of architecture, planning, and understanding the big picture.
 
 ## The Now: AI-Powered DevOps Workflow
 
@@ -207,6 +261,136 @@ flowchart TD
   - AI handles the tedious checks (formatting, common bugs, security issues)
   - Reviewers can focus on what matters most
 
+## The Paradigm Shift: From Documentation Experts to Architecture Experts
+
+The most profound change isn't about the tools—it's about where I spend my cognitive energy. The shift from reading detailed documentation to AI-assisted development has fundamentally changed what it means to be a senior engineer.
+
+### Before: Documentation Deep Dives
+
+Previously, being a good engineer meant:
+- Reading and memorizing extensive documentation
+- Understanding every parameter, option, and syntax detail
+- Keeping mental models of complex APIs and configurations
+- Referencing documentation constantly during development
+
+This was necessary but time-consuming. I'd spend hours reading AWS documentation, Terraform provider docs, Kubernetes API references—not to understand the concepts, but to understand the exact implementation details.
+
+### Now: High-Level Understanding + AI Assistance
+
+Today, my approach has fundamentally changed:
+
+**I read and understand the high-level architecture and concepts**, and I leave the implementation details—the exact syntax, the specific parameters, the precise configuration format—to AI.
+
+#### What This Looks Like in Practice
+
+When I need to implement something new:
+
+1. **High-level understanding**: I read the architectural overview, understand the service's purpose, how it integrates with other systems, its limitations, and its cost implications.
+
+2. **AI handles the details**: The AI generates the code with the correct:
+   - Syntax and formatting
+   - Required and optional parameters
+   - Best practices and patterns
+   - Error handling and edge cases
+
+3. **I review and validate**: I assess whether the solution is architecturally sound, secure, and appropriate for the use case.
+
+#### "But AI Gets It Wrong Sometimes..."
+
+Yes, AI makes mistakes. It might use deprecated syntax, misunderstand a requirement, or hallucinate parameters that don't exist.
+
+**And that's okay.**
+
+Why? Because it's **faster to correct a syntax error than to read the entire documentation yourself**.
+
+Think about it:
+- **Before**: Spend 30-60 minutes reading documentation → Write code → Maybe introduce a bug → Debug
+- **Now**: Spend 5 minutes understanding the concept → AI generates code → Review takes 10 minutes → Correct any mistakes (caught by AI, automation, or manual review) → Deploy
+
+Even when AI gets it wrong, the correction is quick:
+- Linters and automated tests catch syntax errors immediately
+- AI-assisted code review catches logical errors
+- Manual review catches architectural issues
+
+The time saved on documentation reading far outweighs the time spent correcting AI mistakes.
+
+### Where Human Expertise Still Matters (A Lot)
+
+This doesn't mean we can become lazy or stop learning. In fact, **the bar for what matters has gone up**:
+
+#### Critical Skills for the AI Era
+
+1. **Architecture and System Design**
+   - Understanding how systems integrate and communicate
+   - Designing scalable, resilient architectures
+   - Making trade-offs between different approaches
+
+2. **Security and Compliance**
+   - Understanding security principles and threat models
+   - Reviewing AI-generated code for security vulnerabilities
+   - Ensuring compliance with regulations and standards
+
+3. **Networking and Infrastructure**
+   - Understanding how networks, load balancers, and DNS work
+   - Debugging complex infrastructure issues
+   - Designing network architectures
+
+4. **Code Quality and Patterns**
+   - Assessing whether AI-generated code is good, maintainable, and follows best practices
+   - Understanding appropriate design patterns for specific problems
+   - Identifying code smells and potential pitfalls
+
+5. **Problem Analysis**
+   - Understanding **WHAT** needs to be built
+   - Determining **WHEN** it needs to be built and in what order
+   - Analyzing **costs** and **ROI**
+   - Weighing **pros and cons** of different implementation approaches
+   - Identifying risks and dependencies
+
+6. **Business Context**
+   - Understanding the business problem being solved
+   - Aligning technical solutions with business goals
+   - Communicating trade-offs to stakeholders
+
+#### The New Time Distribution
+
+With AI assistance, my time distribution has flipped:
+
+- **5-10% of time**: Understanding implementation syntax and details (AI handles this)
+- **10-15% of time**: Writing and reviewing code
+- **50-60% of time**: Architecture, planning, and understanding system integrations
+- **15-20% of time**: Understanding requirements, costs, trade-offs, and business context
+- **10-15% of time**: Validation, testing, and quality assurance
+
+**The work is now about understanding the problem deeply, not implementing the solution manually.**
+
+### The Smart Assistant Analogy
+
+Think of AI as a highly capable assistant:
+
+- **Before**: You had to do everything yourself, including all the tedious research and implementation work
+- **Now**: You have an assistant who can research, draft, and implement—but needs your guidance and review
+
+If you guide this assistant properly:
+- Provide clear requirements and context
+- Review the output critically
+- Correct mistakes and refine the solution
+- Validate that it solves the right problem
+
+You can produce **higher quality work, faster**, while focusing your energy on the parts that truly require human expertise and judgment.
+
+### The Reality Check
+
+Let me be clear: **You still need to be able to read and write code.** You still need to understand what good code looks like, what security vulnerabilities exist, how systems scale, and how networks operate.
+
+The difference is that you're not spending your time **memorizing** every parameter of every API or **writing** every line of code yourself. Instead, you're:
+- **Guiding** AI to produce the right solution
+- **Reviewing** AI-generated code critically
+- **Architecting** systems that are secure, scalable, and maintainable
+- **Solving** complex problems that require creativity and expertise
+
+**AI hasn't lowered the bar—it's raised it.** The expectation is now that you can move faster, build more, and focus on higher-level problems. The engineers who thrive are those who can leverage AI effectively while maintaining deep expertise in the areas that matter most.
+
 ### The Most Important Change: AI-Assisted Planning
 
 If I had to pick one change that's had the biggest impact, it's **AI-assisted planning**. 
@@ -263,13 +447,14 @@ The biggest misconception is that AI makes you lazy or less skilled. The opposit
 
 ### 2. Planning is Faster and More Thorough
 
-AI doesn't eliminate planning—it makes it faster and more comprehensive. What used to take hours of manual research and documentation now happens in minutes, allowing me to:
-- Understand the problem deeply without spending hours researching
-- Design the solution architecture with AI-assisted exploration
+AI doesn't eliminate planning—it makes it faster and more comprehensive. What used to take hours of manual research and deep documentation diving now happens in minutes, allowing me to:
+- Understand the problem deeply without reading every parameter and syntax detail
+- Design the solution architecture with AI-assisted exploration of high-level concepts
 - Break down work into clear tasks with better dependency analysis
 - Identify risks and edge cases that might have been missed
+- Focus on the "what" and "why" instead of the "how" at the syntax level
 
-The result is better planning in less time, which pays dividends throughout the project lifecycle.
+The result is better planning in less time, which pays dividends throughout the project lifecycle. I'm spending time on architecture and trade-offs, not on memorizing API parameters.
 
 ### 3. Documentation Becomes Living and Useful
 
@@ -348,10 +533,10 @@ The key is using AI to:
 
 This evolution isn't complete. I'm constantly refining my workflows, adding new prompts to my AI library, and finding new ways to leverage AI. Some areas I'm exploring:
 
-- **More sophisticated planning workflows** for complex multi-team projects
 - **Better integration** between planning documents and task management
 - **Enhanced code review workflows** that combine multiple AI tools
 - **Knowledge management** systems that capture and reuse learnings
+- **Automated workflows** from catching an issue in monitoring to opening a PR using AI now it is possible with Sentry. Exploring other tools (though this is a subject for other post)
 
 ## Wrapping Up
 
