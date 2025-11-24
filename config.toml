@@ -19,6 +19,7 @@ theme = "LoveIt"
   # Remove Mermaid CDN override to avoid loading ESM-only builds that do not expose window.mermaid.
   # To re-enable a CDN, set to a UMD/IIFE compatible build (e.g., mermaid 9.x).
   data = ""
+  mermaidJS = ""
 
 [menu]
   [[menu.main]]

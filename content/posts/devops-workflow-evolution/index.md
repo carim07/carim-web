@@ -35,8 +35,6 @@ I'll be honest: changing hardwired workflows isn't easy, even when you're open t
 
 Here's how it changed my workflow in six months.
 
-
-
 ## The Before: Traditional DevOps Workflow
 
 My workflow used to follow the standard DevOps lifecycle pattern:
