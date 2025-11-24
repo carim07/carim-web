@@ -1,7 +1,7 @@
 ---
 title: "How AI Transformed My Workflow as a Senior DevOps Engineer"
 date: 2025-11-19T10:00:00-00:00
-lastmod: 2025-11-19T10:00:00-00:00
+lastmod: 2025-11-24T10:00:00-00:00
 draft: false
 author: "Carim Fadil"
 authorLink: "https://carim.ar"
@@ -25,11 +25,17 @@ math:
 mermaid: true
 ---
 
-Six months ago, if you'd told me that I'd spend most of my time architecting and reviewing code instead of writing it, I would have been skeptical. Yet here we are. My workflow as a Senior DevOps Engineer has fundamentally transformed, and AI has been the catalyst.
-
-This isn't just about using a new tool—it's about a complete shift in how I approach problem-solving, planning, and execution. Let me walk you through what changed.
+AI, AI, AI. Another story? Yes, but this one's personal.
 
 <!--more-->
+
+After nearly 20 years in DevOps, I didn't expect much would fundamentally change how I work. Then in April, Make's CEO announced we'd become an AI-augmented engineering company—not just adopting AI, but becoming leaders and early adopters who'd inspire clients, partners, and competitors alike.
+
+I'll be honest: changing hardwired workflows isn't easy, even when you're open to it. AI isn't just another framework or tool. It's transforming how we think about work itself—perhaps as profoundly as the Industrial Revolution changed manufacturing.
+
+Here's how it changed my workflow in six months.
+
+
 
 ## The Before: Traditional DevOps Workflow
 
