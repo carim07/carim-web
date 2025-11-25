@@ -25,11 +25,15 @@ math:
 mermaid: true
 ---
 
-Hace seis meses, si me hubieras dicho que pasaría la mayor parte de mi tiempo arquitecturando y revisando código en lugar de escribirlo, habría sido escéptico. Sin embargo, aquí estamos. Mi flujo de trabajo como Ingeniero DevOps Senior se ha transformado fundamentalmente, y la IA ha sido el catalizador.
-
-Esto no se trata solo de usar una nueva herramienta—se trata de un cambio completo en cómo abordo la resolución de problemas, la planificación y la ejecución. Déjame contarte qué cambió.
+IA, IA, IA. ¿Otro post más sobre Inteligencia Artificial? Sí, pero este es personal.
 
 <!--more-->
+
+Después de casi 20 años en DevOps, no esperaba que algo cambiara fundamentalmente cómo trabajo. Luego, en abril, el CEO de Make anunció que nos convertiríamos en una empresa de ingeniería aumentada por IA—no solo adoptando IA, sino convirtiéndonos en líderes y pioneros que inspirarían a clientes, socios y competidores por igual.
+
+Seré honesto: cambiar flujos de trabajo arraigados no es fácil, incluso cuando estás abierto a ello. La IA no es solo otro framework o herramienta. Está transformando cómo pensamos sobre el trabajo mismo—quizás tan profundamente como la Revolución Industrial cambió la manufactura.
+
+Así es como cambió mi flujo de trabajo en seis meses.
 
 ## El Antes: Flujo de Trabajo DevOps Tradicional
 
