@@ -25,7 +25,7 @@ math:
 mermaid: true
 ---
 
-The goal: set up CMK encryption for our web apps S3 buckets. Simple, right? Not quite.
+The goal: set up CMK encryption for our web apps' S3 buckets. Simple, right? Not quite.
 
 <!--more-->
 

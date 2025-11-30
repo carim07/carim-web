@@ -25,7 +25,7 @@ math:
 mermaid: true
 ---
 
-Objetivo, encriptar con CMK los buckets de S3 de nuestras web apps. Simple, no? No tanto.
+El objetivo: encriptar con CMK los buckets de S3 de nuestras web apps. Simple, no? No tanto.
 
 <!--more-->
 
