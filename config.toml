@@ -139,7 +139,7 @@ theme = "LoveIt"
       # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
       title = "I'm Carim, nerd and adventure seeker."
       # subtitle shown in home page
-      subtitle = "I'm a DevOps Engineer, Yoga instructor, photography enthusiast. I'm interested in cloud architecture, infrastructure optimization, pipeline automation, biking and nature. Feel free to contact me!"
+      subtitle = "I'm a DevOps Engineer, Yoga Instructor, photography enthusiast. I'm interested in cloud architecture, infrastructure optimization, pipeline automation, biking and nature. Feel free to contact me!"
       # whether to use typeit animation for subtitle
       typeit = true
       # whether to show social links
@@ -308,7 +308,7 @@ theme = "LoveIt"
   # Spanish localized home profile
   [languages.es.params.home.profile]
     title = "Soy Carim, nerd y buscador de aventuras"
-    subtitle = "Soy Ingeniero DevOps, instructor de Yoga, entusiasta de la fotogragía. Estoy interesado en arquitectura en la nube, optimización de infraestructura, automatización de pipelines, el ciclismo y la naturaleza. ¡Contáctame!"
+    subtitle = "Soy Ingeniero DevOps, Instructor de Yoga, entusiasta de la fotogragía. Estoy interesado en arquitectura en la nube, optimización de infraestructura, automatización de pipelines, el ciclismo y la naturaleza. ¡Contáctame!"
 
 [deployment]
 order = [".jpg$", ".gif$"]
