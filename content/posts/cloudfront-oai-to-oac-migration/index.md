@@ -199,6 +199,7 @@ resource "aws_cloudfront_origin_access_control" "webapp_oac" {
 ```
 
 Key differences from OAI:
+
 - `signing_protocol = "sigv4"` - Uses AWS Signature Version 4
 - `signing_behavior = "always"` - Signs every request
 - Properly integrates with IAM and KMS
@@ -293,7 +294,7 @@ sequenceDiagram
     participant CloudFront
     participant S3
     participant KMS
-    
+
     User->>CloudFront: GET /index.html
     CloudFront->>S3: GetObject (OAI credentials)
     S3->>KMS: Decrypt (principal: ???)
@@ -311,7 +312,7 @@ sequenceDiagram
     participant CloudFront
     participant S3
     participant KMS
-    
+
     User->>CloudFront: GET /index.html
     CloudFront->>S3: GetObject (SigV4 signed)
     S3->>KMS: Decrypt (principal: cloudfront.amazonaws.com)
@@ -346,6 +347,7 @@ aws cloudtrail lookup-events \
 ```
 
 **Success criteria:**
+
 - Website loads without XML errors
 - CloudTrail shows successful `Decrypt` events
 - KMS metrics show no `AccessDenied` errors
@@ -506,12 +508,14 @@ module "s3_web_applications_kms_key" {
 If you're migrating from OAI to OAC:
 
 **Pre-Migration:**
+
 - [ ] Identify all CloudFront distributions using OAI
 - [ ] Identify all S3 buckets with SSE-KMS encryption
 - [ ] Review KMS key policies
 - [ ] Plan maintenance window (if production)
 
 **Infrastructure Changes:**
+
 - [ ] Create `aws_cloudfront_origin_access_control` resource
 - [ ] Update CloudFront origin to use `origin_access_control_id`
 - [ ] Remove `s3_origin_config` block
@@ -521,6 +525,7 @@ If you're migrating from OAI to OAC:
 - [ ] Keep OAI resource (marked deprecated)
 
 **Testing:**
+
 - [ ] Deploy to non-production environment
 - [ ] Verify website loads without errors
 - [ ] Check CloudTrail for successful KMS operations
@@ -530,6 +535,7 @@ If you're migrating from OAI to OAC:
 - [ ] Verify custom error pages work
 
 **Post-Migration:**
+
 - [ ] Monitor production for 24-48 hours
 - [ ] Remove deprecated OAI resources (separate PR)
 - [ ] Update documentation
@@ -573,4 +579,3 @@ If you're running CloudFront + S3 with OAI and planning to enable CMK encryption
 ---
 
 *Found this helpful? Hit me up on [LinkedIn](https://linkedin.com/in/carimfadil).*
-

@@ -39,7 +39,7 @@ Así que empaqué mi mochila y salí desde Camino Verde en Envigado hacia la Lag
 
 Los primeros kilómetros fueron intensos. Hace casi 3 meses que estoy viviendo a esta altura y en esta montaña, y he venido preparándome para poder subir y bajar muchos kilómetros en un día sin sufrir de las rodillas. Comencé trotando 3 kms, un ascenso de aproximadamente 200 metros, relativamente fácil, hasta la entrada del Camino Real La Ayurá.
 
-El sendero es difícil al comienzo: barro, piedras y ascenso más pronunciado, por lo que cambié a caminata. Atravesé arroyos y vi muchas mariposas. Nunca había visto tantas mariposas en mi vida: amarillas, Monarcas, y unas azules y negras que nunca había visto, que se llaman Altinote. Haber visto tantas mariposas y conocido estas nuevas especies ya me hizo sentir que había valido la pena la salida.
+El sendero es difícil al comienzo: barro, piedras y ascenso más pronunciado, por lo que cambié a caminata. Atravesé arroyos y vi muchas mariposas. Nunca había visto tantas mariposas en mi vida: amarillas, Monarcas o [Soldado](https://mexico.inaturalist.org/taxa/50065-Danaus-eresimus), y unas azules y negras que nunca había visto, que se llaman [Altinote](https://www.inaturalist.org/taxa/60876-Altinote-ozomene). Haber visto tantas mariposas y conocido estas nuevas especies ya me hizo sentir que había valido la pena la salida.
 
 Esta parte del camino, hasta la Cascada del Diablo, es la más concurrida, y se ven grupos de amigos y parejas que suben a hacer ejercicio y refrescarse.
 

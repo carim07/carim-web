@@ -199,6 +199,7 @@ resource "aws_cloudfront_origin_access_control" "webapp_oac" {
 ```
 
 Diferencias clave de OAI:
+
 - `signing_protocol = "sigv4"` - Usa AWS Signature Version 4
 - `signing_behavior = "always"` - Firma cada solicitud
 - Se integra correctamente con IAM y KMS
@@ -293,7 +294,7 @@ sequenceDiagram
     participant CloudFront
     participant S3
     participant KMS
-    
+
     Usuario->>CloudFront: GET /index.html
     CloudFront->>S3: GetObject (credenciales OAI)
     S3->>KMS: Decrypt (principal: ???)
@@ -311,7 +312,7 @@ sequenceDiagram
     participant CloudFront
     participant S3
     participant KMS
-    
+
     Usuario->>CloudFront: GET /index.html
     CloudFront->>S3: GetObject (firmado SigV4)
     S3->>KMS: Decrypt (principal: cloudfront.amazonaws.com)
@@ -346,6 +347,7 @@ aws cloudtrail lookup-events \
 ```
 
 **Criterios de éxito:**
+
 - El sitio web carga sin errores XML
 - CloudTrail muestra eventos `Decrypt` exitosos
 - Las métricas de KMS no muestran errores de `AccessDenied`
@@ -506,12 +508,14 @@ module "s3_web_applications_kms_key" {
 Si estás migrando de OAI a OAC:
 
 **Pre-Migración:**
+
 - [ ] Identificar todas las distribuciones CloudFront usando OAI
 - [ ] Identificar todos los buckets S3 con cifrado SSE-KMS
 - [ ] Revisar políticas de claves KMS
 - [ ] Planear ventana de mantenimiento (si es producción)
 
 **Cambios de Infraestructura:**
+
 - [ ] Crear recurso `aws_cloudfront_origin_access_control`
 - [ ] Actualizar origen de CloudFront para usar `origin_access_control_id`
 - [ ] Eliminar bloque `s3_origin_config`
@@ -521,6 +525,7 @@ Si estás migrando de OAI a OAC:
 - [ ] Mantener recurso OAI (marcado como deprecado)
 
 **Pruebas:**
+
 - [ ] Desplegar a entorno no-producción
 - [ ] Verificar que el sitio web carga sin errores
 - [ ] Verificar CloudTrail para operaciones KMS exitosas
@@ -530,6 +535,7 @@ Si estás migrando de OAI a OAC:
 - [ ] Verificar que las páginas de error personalizadas funcionan
 
 **Post-Migración:**
+
 - [ ] Monitorear producción por 24-48 horas
 - [ ] Eliminar recursos OAI deprecados (PR separado)
 - [ ] Actualizar documentación
@@ -573,4 +579,3 @@ Si estás ejecutando CloudFront + S3 con OAI y planeando habilitar cifrado CMK, 
 ---
 
 *¿Te resultó útil? Contáctame en [LinkedIn](https://linkedin.com/in/carimfadil).*
-

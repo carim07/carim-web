@@ -39,7 +39,7 @@ So I packed my backpack and headed out from Camino Verde in Envigado toward Lagu
 
 The first kilometers were intense. I've been living at this altitude and on this mountain for almost 3 months now, and I've been preparing myself to be able to climb and descend many kilometers in a day without suffering from my knees. I started jogging 3 km, an ascent of approximately 200 meters, relatively easy, until the entrance to Camino Real La Ayurá.
 
-The trail is difficult at the beginning: mud, stones, and a steeper ascent, so I switched to walking. I crossed streams and saw many butterflies. I had never seen so many butterflies in my life: yellow ones, Monarchs, and some blue and black ones I had never seen before, called Altinote. Having seen so many butterflies and discovered these new species already made me feel that the outing had been worth it.
+The trail is difficult at the beginning: mud, stones, and a steeper ascent, so I switched to walking. I crossed streams and saw many butterflies. I had never seen so many butterflies in my life: yellow ones, Monarch or [Soldier](https://www.inaturalist.org/taxa/50065-Danaus-eresimus), and some blue and black ones I had never seen before, called [Altinote](https://colombia.inaturalist.org/taxa/60876-Altinote-ozomene). Having seen so many butterflies and discovered these new species already made me feel that the outing had been worth it.
 
 This part of the trail, up to Cascada del Diablo, is the most crowded, and you see groups of friends and couples climbing to exercise and refresh themselves.
 
