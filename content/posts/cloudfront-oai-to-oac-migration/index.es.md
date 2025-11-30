@@ -25,13 +25,15 @@ math:
 mermaid: true
 ---
 
+Objetivo, encriptar con CMK los buckets de S3 de nuestras web apps. Simple, no? No tanto.
+
+<!--more-->
+
 Habíamos configurado proactivamente Trivy para escanear nuestra infraestructura como código, buscando vulnerabilidades de seguridad antes de que se convirtieran en problemas. Un día, los resultados del escaneo llegaron marcados en rojo: buckets S3 sin cifrar. Severidad alta. La solución parecía simple: agregar Customer Managed Keys (CMK) con `kms_master_key_id` a la configuración del bucket S3 y listo. Desplegamos a producción, y todo parecía estar bien. Las aplicaciones siguieron funcionando. ¿Crisis evitada verdad?
 
 No exactamente. Horas más tarde, después de un despliegue rutinario del frontend, cuatro aplicaciones web de producción se cayeron completamente, devolviendo solo páginas de error XML.
 
 Pero aquí está el lado positivo: **nuestro monitoreo de uptime lo detectó inmediatamente**. Sin esperar reportes de clientes, sin respuesta retrasada. Las alarmas se dispararon en el instante en que terminó el despliegue. Y con asistencia de IA, identificamos la causa raíz y la solución en minutos—no horas de depuración a través de documentación de AWS.
-
-<!--more-->
 
 ## La Configuración: Un Setup de CloudFront Heredado
 

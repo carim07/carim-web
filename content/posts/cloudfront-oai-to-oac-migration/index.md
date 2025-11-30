@@ -25,13 +25,15 @@ math:
 mermaid: true
 ---
 
+The goal: set up CMK encryption for our web apps S3 buckets. Simple, right? Not quite.
+
+<!--more-->
+
 We had proactively set up Trivy to scan our infrastructure-as-code, looking for security vulnerabilities before they became problems. One day, the scan results came back flagged in red: unencrypted S3 buckets. High severity. The fix seemed simple - add Customer Managed Keys (CMK) with `kms_master_key_id` to the S3 bucket configuration and call it a day. We deployed to production, and everything seemed fine. The apps kept running. Crisis averted, right?
 
 Not quite. Hours later, after a routine frontend deployment, four production web applications went completely dark, returning nothing but XML error pages.
 
 But here's the silver lining: **our uptime monitoring caught it immediately**. No waiting for customer reports, no delayed response. Alarms fired the instant the deployment finished. And with AI assistance, we identified the root cause and the fix within minutes—not hours of debugging through AWS documentation.
-
-<!--more-->
 
 ## The Setup: A Legacy CloudFront Configuration
 
