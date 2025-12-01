@@ -17,7 +17,7 @@ toc:
 
 resources:
 - name: "featured-image"
-  src: "laguna-normandia.jpg"
+  src: "laguna-normandia.jpeg"
 
 ---
 
