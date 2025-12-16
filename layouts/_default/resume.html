@@ -1,0 +1,514 @@
+{{ define "title" }}Resume - {{ .Site.Title }}{{ end }}
+
+{{ define "content" }}
+{{ $resume := .Site.Data.resume }}
+<div class="page single special">
+<style>
+  .resume-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    color: var(--color-contrast-high, #242729);
+    line-height: 1.5;
+  }
+
+  @media print {
+    /* Hide theme navigation and footer - be specific to avoid hiding resume header */
+    body > .wrapper > header,
+    .header-wrapper,
+    #header-desktop,
+    #header-mobile,
+    body > .wrapper > footer,
+    .footer,
+    #fixed-buttons {
+      display: none !important;
+    }
+
+    /* Reset page wrapper margins */
+    body, .wrapper, .main, .main > .container {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .page {
+      padding: 0 !important;
+    }
+
+    .resume-container {
+      max-width: 100%;
+      padding: 1rem;
+      color: #242729 !important;
+    }
+    .resume-container * {
+      color: #242729 !important;
+    }
+    /* Keep resume header visible */
+    .resume-header {
+      display: block !important;
+    }
+    .no-print {
+      display: none !important;
+    }
+    .resume-summary {
+      background: #f8f9f9 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .skill-item, .reference-item {
+      background: #f8f9f9 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .skill-tag {
+      background: #e1ecf4 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+
+  .resume-header {
+    border-bottom: 3px solid #0077cc;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .resume-name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem 0;
+    color: #0077cc;
+  }
+
+  .resume-label {
+    font-size: 1.25rem;
+    color: var(--color-contrast-medium, #6a737c);
+    margin: 0 0 1rem 0;
+  }
+
+  .resume-summary {
+    font-size: 1rem;
+    color: var(--color-contrast-high, #3c4146);
+    margin-bottom: 1rem;
+    background: var(--color-bg-secondary, #f8f9f9);
+    padding: 1rem;
+    border-left: 4px solid #0077cc;
+  }
+
+  [data-theme="dark"] .resume-summary,
+  .dark .resume-summary,
+  [theme="dark"] .resume-summary,
+  body[theme="dark"] .resume-summary {
+    background: rgba(255,255,255,0.08);
+    color: #c9d1d9;
+  }
+
+  /* Dark mode text improvements */
+  [data-theme="dark"] .work-summary,
+  .dark .work-summary,
+  [theme="dark"] .work-summary,
+  body[theme="dark"] .work-summary,
+  [data-theme="dark"] .work-highlights li,
+  .dark .work-highlights li,
+  [theme="dark"] .work-highlights li,
+  body[theme="dark"] .work-highlights li {
+    color: #c9d1d9;
+  }
+
+  [data-theme="dark"] .resume-label,
+  .dark .resume-label,
+  [theme="dark"] .resume-label,
+  body[theme="dark"] .resume-label,
+  [data-theme="dark"] .work-company,
+  .dark .work-company,
+  [theme="dark"] .work-company,
+  body[theme="dark"] .work-company {
+    color: #8b949e;
+  }
+
+  [data-theme="dark"] .work-dates,
+  .dark .work-dates,
+  [theme="dark"] .work-dates,
+  body[theme="dark"] .work-dates {
+    color: #8b949e;
+  }
+
+  [data-theme="dark"] .resume-section-title,
+  .dark .resume-section-title,
+  [theme="dark"] .resume-section-title,
+  body[theme="dark"] .resume-section-title {
+    color: #e6edf3;
+    border-bottom-color: #30363d;
+  }
+
+  [data-theme="dark"] .work-item,
+  .dark .work-item,
+  [theme="dark"] .work-item,
+  body[theme="dark"] .work-item,
+  [data-theme="dark"] .education-item,
+  .dark .education-item,
+  [theme="dark"] .education-item,
+  body[theme="dark"] .education-item {
+    border-left-color: #30363d;
+  }
+
+  .resume-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .resume-contact a {
+    color: #0077cc;
+    text-decoration: none;
+  }
+
+  .resume-contact a:hover {
+    text-decoration: underline;
+  }
+
+  .resume-section {
+    margin-bottom: 2rem;
+  }
+
+  .resume-section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-contrast-high, #242729);
+    border-bottom: 2px solid var(--color-border, #e4e6e8);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .work-item, .education-item {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-border, #e4e6e8);
+  }
+
+  .work-item:hover, .education-item:hover {
+    border-left-color: #0077cc;
+  }
+
+  .work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .work-position {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0077cc;
+    margin: 0;
+  }
+
+  .work-company {
+    font-size: 1rem;
+    color: var(--color-contrast-medium, #6a737c);
+    margin: 0.25rem 0;
+  }
+
+  .work-company a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .work-company a:hover {
+    color: #0077cc;
+  }
+
+  .work-dates {
+    font-size: 0.85rem;
+    color: var(--color-contrast-low, #848d95);
+    white-space: nowrap;
+  }
+
+  .work-summary {
+    margin: 0.5rem 0;
+    color: var(--color-contrast-high, #3c4146);
+  }
+
+  .work-highlights {
+    margin: 0.5rem 0 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .work-highlights li {
+    margin-bottom: 0.25rem;
+    color: var(--color-contrast-high, #3c4146);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-item {
+    background: var(--color-bg-secondary, #f8f9f9);
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+  }
+
+  [data-theme="dark"] .skill-item,
+  .dark .skill-item,
+  [theme="dark"] .skill-item,
+  body[theme="dark"] .skill-item {
+    background: #161b22;
+    border: 1px solid #30363d;
+  }
+
+  [data-theme="dark"] .skill-name,
+  .dark .skill-name,
+  [theme="dark"] .skill-name,
+  body[theme="dark"] .skill-name {
+    color: #e6edf3;
+  }
+
+  .skill-name {
+    font-weight: 600;
+    color: var(--color-contrast-high, #242729);
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    background: #e1ecf4;
+    color: #39739d;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+  }
+
+  [data-theme="dark"] .skill-tag,
+  .dark .skill-tag,
+  [theme="dark"] .skill-tag,
+  body[theme="dark"] .skill-tag {
+    background: #1f3a5f;
+    color: #79c0ff;
+  }
+
+  .languages-grid {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .language-item {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .language-name {
+    font-weight: 600;
+    color: var(--color-contrast-high, inherit);
+  }
+
+  .language-fluency {
+    color: var(--color-contrast-medium, #6a737c);
+  }
+
+  .references-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .reference-item {
+    background: var(--color-bg-secondary, #f8f9f9);
+    padding: 1rem;
+    border-radius: 4px;
+  }
+
+  [data-theme="dark"] .reference-item,
+  .dark .reference-item,
+  [theme="dark"] .reference-item,
+  body[theme="dark"] .reference-item {
+    background: #161b22;
+    border: 1px solid #30363d;
+  }
+
+  [data-theme="dark"] .reference-title,
+  .dark .reference-title,
+  [theme="dark"] .reference-title,
+  body[theme="dark"] .reference-title {
+    color: #8b949e;
+  }
+
+  [data-theme="dark"] .language-name,
+  .dark .language-name,
+  [theme="dark"] .language-name,
+  body[theme="dark"] .language-name {
+    color: #e6edf3;
+  }
+
+  [data-theme="dark"] .language-fluency,
+  .dark .language-fluency,
+  [theme="dark"] .language-fluency,
+  body[theme="dark"] .language-fluency {
+    color: #8b949e;
+  }
+
+  .reference-name {
+    font-weight: 600;
+    color: #0077cc;
+  }
+
+  .reference-name a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .reference-name a:hover {
+    text-decoration: underline;
+  }
+
+  .reference-title {
+    color: var(--color-contrast-medium, #6a737c);
+    font-size: 0.9rem;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #0077cc;
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .download-btn:hover {
+    background: #005999;
+    color: white !important;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+</style>
+
+<div class="resume-container">
+  <header class="resume-header">
+    <h1 class="resume-name">{{ $resume.basics.name }}</h1>
+    <p class="resume-label">{{ $resume.basics.label }}</p>
+    <div class="resume-summary">{{ $resume.basics.summary }}</div>
+    <div class="resume-contact">
+      {{ with $resume.basics.email }}<span>📧 <a href="mailto:{{ . }}">{{ . }}</a></span>{{ end }}
+      {{ with $resume.basics.url }}<span>🌐 <a href="{{ . }}" target="_blank">{{ . }}</a></span>{{ end }}
+      {{ range $resume.basics.profiles }}
+        <span>
+          {{ if eq .network "LinkedIn" }}💼{{ else if eq .network "GitHub" }}💻{{ else }}🔗{{ end }}
+          <a href="{{ .url }}" target="_blank">{{ .network }}</a>
+        </span>
+      {{ end }}
+    </div>
+    <div class="actions no-print">
+      <button class="download-btn" onclick="window.print()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download PDF
+      </button>
+    </div>
+  </header>
+
+  <section class="resume-section">
+    <h2 class="resume-section-title">Experience</h2>
+    {{ range $resume.work }}
+    <div class="work-item">
+      <div class="work-header">
+        <div>
+          <h3 class="work-position">{{ .position }}</h3>
+          <p class="work-company">
+            {{ if .url }}<a href="{{ .url }}" target="_blank">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}
+            {{ with .location }} · {{ . }}{{ end }}
+          </p>
+        </div>
+        <span class="work-dates">
+          {{ .startDate | time.Format "2006" }} – {{ if .endDate }}{{ .endDate | time.Format "2006" }}{{ else }}Present{{ end }}
+        </span>
+      </div>
+      {{ with .summary }}<p class="work-summary">{{ . }}</p>{{ end }}
+      {{ with .highlights }}
+      <ul class="work-highlights">
+        {{ range . }}<li>{{ . }}</li>{{ end }}
+      </ul>
+      {{ end }}
+    </div>
+    {{ end }}
+  </section>
+
+  <section class="resume-section">
+    <h2 class="resume-section-title">Education</h2>
+    {{ range $resume.education }}
+    <div class="education-item">
+      <div class="work-header">
+        <div>
+          <h3 class="work-position">{{ .studyType }} in {{ .area }}</h3>
+          <p class="work-company">{{ .institution }}{{ with .location }} · {{ . }}{{ end }}</p>
+        </div>
+        <span class="work-dates">{{ .startDate | time.Format "2006" }} – {{ .endDate | time.Format "2006" }}</span>
+      </div>
+    </div>
+    {{ end }}
+  </section>
+
+  <section class="resume-section">
+    <h2 class="resume-section-title">Skills</h2>
+    <div class="skills-grid">
+      {{ range $resume.skills }}
+      <div class="skill-item">
+        <div class="skill-name">{{ .name }}</div>
+        <div class="skill-keywords">
+          {{ range .keywords }}<span class="skill-tag">{{ . }}</span>{{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="resume-section">
+    <h2 class="resume-section-title">Languages</h2>
+    <div class="languages-grid">
+      {{ range $resume.languages }}
+      <div class="language-item">
+        <span class="language-name">{{ .language }}:</span>
+        <span class="language-fluency">{{ .fluency }}</span>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="resume-section">
+    <h2 class="resume-section-title">References</h2>
+    <div class="references-grid">
+      {{ range $resume.references }}
+      <div class="reference-item">
+        <div class="reference-name">
+          {{ if .url }}<a href="{{ .url }}" target="_blank">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}
+        </div>
+        <div class="reference-title">{{ .reference }}</div>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+</div>
+</div>
+{{ end }}
+

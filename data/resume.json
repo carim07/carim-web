@@ -1,0 +1,175 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Carim Fadil",
+    "label": "Backend and DevOps Engineer",
+    "image": "",
+    "email": "carimfadil@gmail.com",
+    "url": "https://carim.ar",
+    "summary": "Backend and DevOps Engineer specialized in Cloud Infrastructure, CI/CD, and Security Compliance. Track record of taking products from inception to profitability. Experience with AWS, Terraform, and modern DevOps practices.",
+    "location": {
+      "countryCode": "AR",
+      "region": "Remote"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "carimfadil",
+        "url": "https://www.linkedin.com/in/carimfadil/"
+      },
+      {
+        "network": "GitHub",
+        "username": "carim07",
+        "url": "https://github.com/carim07"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Make (PRGVentures / PROG Holdings)",
+      "position": "Backend and DevOps Engineer",
+      "url": "https://www.letsmake.com/project/fintech-cash-advance",
+      "startDate": "2023-01-01",
+      "summary": "Part of the team that grew PRGVentures from startup to profitability, building a fintech cash advance platform.",
+      "highlights": [
+        "Led CI/CD migration from CircleCI/Octopus to GitHub Actions with AWS OIDC authentication",
+        "Achieved NIST CSF compliance, improving AWS Config score from 60% to 87%",
+        "Implemented security hardening: KMS encryption, CloudFront logging, ECR immutable tags",
+        "Architected Terraform infrastructure for 15+ Lambda functions and ECS deployments",
+        "Built Flutter CI/CD pipeline with selective builds and multi-environment deployments"
+      ]
+    },
+    {
+      "name": "Civitas Learning",
+      "position": "DevOps Engineer",
+      "url": "https://www.civitaslearning.com/platform/planning/",
+      "startDate": "2021-01-01",
+      "endDate": "2023-12-31",
+      "summary": "Solo Platform and DevOps Engineer for the Academic Planning product, taking it from inception to profitability.",
+      "highlights": [
+        "Designed and deployed infrastructure for ETL Services using ECS Scheduled Tasks, Lambda, SQS, S3 with Terraform",
+        "Maintained and modernized Student Scheduler Infrastructure, improving IaC and CI/CD for better developer experience",
+        "Automation of deployment pipelines in GitHub Actions, Bamboo and Jenkins",
+        "SOC2 audit: IAM users, groups & policies best practices enforcement"
+      ]
+    },
+    {
+      "name": "BairesDev",
+      "position": "DevOps Architect",
+      "startDate": "2021-03-01",
+      "endDate": "2021-05-31",
+      "summary": "3-month contract to deliver MVP infrastructure for an e-learning application.",
+      "highlights": [
+        "Cloud infrastructure management in AWS for an e-learning app built in NextJS and deployed in ECS",
+        "CI/CD in GitHub + Drone.io and Docker",
+        "Infrastructure as Code in Terraform"
+      ]
+    },
+    {
+      "name": "Avature",
+      "position": "Implementation Consultant",
+      "url": "https://www.avature.net/",
+      "startDate": "2019-01-01",
+      "endDate": "2021-02-28",
+      "location": "Buenos Aires, Argentina",
+      "summary": "Lead small teams to implement projects of up to 1.5M budget for Fortune 500 clients. Working cross-functionally with business and technical teams internally and with the client, I take ownership of high scale projects to drive them to completion."
+    },
+    {
+      "name": "S4DS Software",
+      "position": "Systems Engineer",
+      "startDate": "2016-01-01",
+      "endDate": "2019-12-31",
+      "location": "Medellin, Colombia",
+      "summary": "HA ecommerce web application support, infrastructure design and maintenance.",
+      "highlights": [
+        "AWS services: CloudFront, ELB, EC2, SQS, SNS, RDS, SSM, Lambda, CloudWatch, CodeDeploy",
+        "CI/CD using Bitbucket pipelines and CodeDeploy",
+        "Lead implementation projects for US & UK retail clients",
+        "Client facing Help Desk team management with 24/7 shifts"
+      ]
+    },
+    {
+      "name": "Universidad Nacional del Litoral",
+      "position": "Systems Administrator",
+      "startDate": "2014-01-01",
+      "endDate": "2015-12-31",
+      "location": "Santa Fe, Argentina",
+      "summary": "Postfix, Zabbix monitoring implementation and maintenance"
+    },
+    {
+      "name": "Universidad Nacional del Litoral",
+      "position": "Service Desk Technician",
+      "startDate": "2008-01-01",
+      "endDate": "2011-12-31",
+      "location": "Santa Fe, Argentina"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad Nacional del Litoral",
+      "area": "Computer Engineering",
+      "studyType": "Bachelor",
+      "startDate": "2006-01-01",
+      "endDate": "2014-12-31",
+      "location": "Santa Fe, Argentina"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Cloud",
+      "keywords": ["AWS", "ECS", "Lambda", "RDS", "SQS", "SNS", "S3", "CloudFront", "VPC", "IAM", "KMS", "WAF", "Route53"]
+    },
+    {
+      "name": "Infrastructure as Code",
+      "keywords": ["Terraform", "AWS CloudFormation"]
+    },
+    {
+      "name": "CI/CD",
+      "keywords": ["GitHub Actions", "CircleCI", "Bitbucket Pipelines", "Jenkins", "Bamboo"]
+    },
+    {
+      "name": "Security",
+      "keywords": ["NIST CSF", "SOC2", "CodeQL", "Trivy", "AWS Config"]
+    },
+    {
+      "name": "Languages",
+      "keywords": ["TypeScript", "Python", "Bash", "HCL", "Dart/Flutter"]
+    },
+    {
+      "name": "Containers",
+      "keywords": ["Docker", "Amazon ECR", "Amazon ECS"]
+    },
+    {
+      "name": "Frameworks",
+      "keywords": ["NestJS", "Flutter", "Serverless Framework"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Spanish",
+      "fluency": "Native"
+    },
+    {
+      "language": "English",
+      "fluency": "Advanced (C1 Certified)"
+    }
+  ],
+  "references": [
+    {
+      "name": "Nate Priddy",
+      "reference": "Engineering Manager at Civitas Learning",
+      "url": "https://www.linkedin.com/in/nate-priddy-47966420/"
+    },
+    {
+      "name": "Greg Lamp",
+      "reference": "CTO at Civitas Learning",
+      "url": "https://www.linkedin.com/in/glamp/"
+    }
+  ],
+  "meta": {
+    "canonical": "https://carim.ar/resume",
+    "version": "v1.0.0",
+    "lastModified": "2025-12-16"
+  }
+}
+
