@@ -30,12 +30,12 @@
       "position": "Backend and DevOps Engineer",
       "url": "https://www.letsmake.com/project/fintech-cash-advance",
       "startDate": "2023-01-01",
-      "summary": "Part of the team that grew PRGVentures from startup to profitability, building a fintech cash advance platform.",
+      "summary": "Part of the team that grew PRGVentures from startup to profitability, building a fintech cash advance platform that moves 300 million dollars annually in transactions.",
       "highlights": [
         "Led CI/CD migration from CircleCI/Octopus to GitHub Actions with AWS OIDC authentication",
-        "Achieved NIST CSF compliance, improving AWS Config score from 60% to 87%",
+        "Achieved NIST CSF compliance, improving AWS Security Hub score from 60% to 87%",
         "Implemented security hardening: KMS encryption, CloudFront logging, ECR immutable tags",
-        "Architected Terraform infrastructure for 15+ Lambda functions and ECS deployments",
+        "Architected Terraform-based cloud infrastructure for containerized and serverless workloads across ECS and Kubernetes (EKS), including deployment automation, service networking, and CI/CD integration.",
         "Built Flutter CI/CD pipeline with selective builds and multi-environment deployments"
       ]
     },
@@ -137,7 +137,7 @@
     },
     {
       "name": "Containers",
-      "keywords": ["Docker", "Amazon ECR", "Amazon ECS"]
+      "keywords": ["Docker", "Amazon ECR", "Amazon ECS", "Kubernetes (EKS Fundamentals), Helm (basic)"]
     },
     {
       "name": "Frameworks",
